@@ -237,7 +237,7 @@ dependencies = [
 [[package]]
 name = "bitcoin"
 version = "0.31.2"
-source = "git+https://github.com/Junkcoin-Foundation/rust-electrs-junkcoin?rev=f44940cc9a56757e7bcea807440c2f9672537592#f44940cc9a56757e7bcea807440c2f9672537592"
+source = "git+https://github.com/WojakCoinProj/rust-electrs-wjk?rev=511d2a84a0c474265b0708c6cc9ddc8dfcb4a6ff#511d2a84a0c474265b0708c6cc9ddc8dfcb4a6ff"
 dependencies = [
  "bech32 0.10.0-beta",
  "bitcoin-internals",
@@ -655,7 +655,7 @@ dependencies = [
  "arrayref",
  "base64 0.22.0",
  "bincode",
- "bitcoin 0.31.2 (git+https://github.com/Junkcoin-Foundation/rust-electrs-junkcoin?rev=f44940cc9a56757e7bcea807440c2f9672537592)",
+ "bitcoin 0.31.2 (git+https://github.com/WojakCoinProj/rust-electrs-wjk?rev=511d2a84a0c474265b0708c6cc9ddc8dfcb4a6ff)",
  "bitcoind 0.35.1",
  "clap",
  "crossbeam-channel",

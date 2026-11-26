@@ -520,7 +520,7 @@ impl Daemon {
     pub fn gettransactions(&self, txhashes: &[&Txid]) -> Result<Vec<Transaction>> {
         let params_list: Vec<Value> = txhashes
             .iter()
-            .map(|txhash| json!([txhash, /*verbose=*/ false]))
+            .map(|txhash| json!([txhash, 0]))
             .collect();
 
         let values = self.requests("getrawtransaction", &params_list)?;
@@ -538,16 +538,16 @@ impl Daemon {
         blockhash: &BlockHash,
         verbose: bool,
     ) -> Result<Value> {
-        self.request("getrawtransaction", json!([txid, verbose, blockhash]))
+        self.request("getrawtransaction", json!([txid, if verbose { 1 } else { 0 }, blockhash]))
     }
 
     pub fn getmempooltx(&self, txhash: &Txid) -> Result<Transaction> {
-        let value = self.request("getrawtransaction", json!([txhash, /*verbose=*/ false]))?;
+        let value = self.request("getrawtransaction", json!([txhash, 0]))?;
         tx_from_value(value)
     }
 
     pub fn getmempooltxids(&self) -> Result<HashSet<Txid>> {
-        let res = self.request("getrawmempool", json!([/*verbose=*/ false]))?;
+        let res = self.request("getrawmempool", json!([false]))?;
         Ok(serde_json::from_value(res).chain_err(|| "invalid getrawmempool reply")?)
     }
 
